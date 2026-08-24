@@ -1,0 +1,21 @@
+{
+  "lockfile_version": 1,
+  "plugins": {
+    "cursor/agent-discipline": "6aee68f9dc66209e776557f3cc301f1a78278b0ed43751010f604459c0ebe814",
+    "cursor/block-destructive-commands": "49420d22864b2cd796f5ee537f987adbe939dee7f583de9b0980cc69a9472764",
+    "cursor/block-invisible-unicode": "44f2d323b492bea23cbb85d6f49e03426d42a9fac7d16224db20825a3fdb576f",
+    "cursor/block-no-verify": "ddcae9bfab9b7b6ea362ebb497446b1ed19fd4cd0b0b3c448fdc975b1f0ce609",
+    "cursor/block-wildcard-agent-permissions": "8291412b728af4d21900ddf8e816645fd8759a7db9d8dca0272c77fc9755f7af",
+    "cursor/code-safety": "8c93e50dbc863ca042a6b0ef2a27d396c010d00ffc4ee3b71d4c5edc0f0b761a",
+    "cursor/context-hygiene": "8b2b4606f167ea747311d9bf03913a0c72bdde6ec5767a68d099de36a9e29c5c",
+    "cursor/git-safety": "2a35891c3912091c08679f18f7c1e1480a2390ccc6a814d811478f87fabcd075",
+    "cursor/injection-defense": "cf7e3331e2322b933812715f85916ee131925ae35738f1aca3874b8d8253a61d",
+    "cursor/memory-discipline": "e43b2ab99d422bbf5c24a816c761c1f90108014e465bd460c0304ebd2f6bc29a",
+    "cursor/protect-agent-config": "53c21e929b4c3dbd49801598ece27df827c747d3aa4526e659b61861bef2ccd6",
+    "cursor/protect-commit-privacy": "72c8972c64cede6a45fafb292607c2ff88e70fb5c44f0e60d69279d51239f1b8",
+    "cursor/protect-main-branch": "675c941751b567805ef9187532bfa5ca7a52a823e19fc0431b2b39aa5cf60974",
+    "cursor/scan-secrets": "d424abe046d2b188deecd8482f548ae0887c1e77dbbb2856f8a0d517a2fccde7",
+    "cursor/token-efficiency": "bcafe9332316f54f75924653456de4c1c630247a788c390a3a35860da0f1049f",
+    "cursor/verify-dependency-exists": "97c7a79d3f8e9845d4afe0f24412b1c6363ac6dde2ba16a3103de3c447444ac4"
+  }
+}

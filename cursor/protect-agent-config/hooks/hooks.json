@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "hooks": {
+    "beforeShellExecution": [
+      {
+        "command": "python3 \"${CURSOR_PLUGIN_ROOT}/scripts/pretooluse.py\" --guard \"${CURSOR_PLUGIN_ROOT}/scripts/protect-agent-config.sh\"",
+        "timeout": 30
+      }
+    ]
+  }
+}

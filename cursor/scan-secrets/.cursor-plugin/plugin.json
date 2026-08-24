@@ -1,0 +1,19 @@
+{
+  "name": "scan-secrets",
+  "displayName": "Scan Secrets",
+  "description": "Pre-commit hook that blocks commits of credential files and high-entropy secret values. Best-effort guard; not a replacement for a dedicated secret scanner. [Advisory skill only; enforcement needs chock installed in the repo.]",
+  "version": "0.0.3",
+  "author": {
+    "name": "chock-core"
+  },
+  "repository": "https://github.com/open-coder-ai/chock",
+  "license": "Apache-2.0",
+  "keywords": [
+    "chock",
+    "policy-as-code",
+    "hook",
+    "block"
+  ],
+  "category": "developer-tools",
+  "skills": "./skills/"
+}
