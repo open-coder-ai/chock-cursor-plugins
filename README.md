@@ -5,6 +5,8 @@ Chock policies packaged as installable plugins for **Cursor**. Guard policies sh
 before it runs** — witnessed blocking on a real Cursor install (2026-08-24), with benign
 commands in the same session still allowed.
 
+<img src="docs/assets/hero.svg" alt="Animated replay: an agent runs terraform destroy and the chock guard denies it before it runs (Cursor, permission deny)" width="720">
+
 **This repository is generated.** Every file is compiled from policy sources in
 [chock-catalog](https://github.com/open-coder-ai/chock-catalog) by
 [chock](https://github.com/open-coder-ai/chock). Pull requests here are closed with a
