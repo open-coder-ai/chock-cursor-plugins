@@ -1,5 +1,9 @@
 # chock-cursor-plugins
 
+[![Generated-only](https://github.com/open-coder-ai/chock-cursor-plugins/actions/workflows/generated-only.yml/badge.svg)](https://github.com/open-coder-ai/chock-cursor-plugins/actions/workflows/generated-only.yml)
+[![License: Apache 2.0](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](LICENSE)
+[![Contribute upstream](https://img.shields.io/badge/contribute-chock--catalog-8957e5)](https://github.com/open-coder-ai/chock-catalog)
+
 Chock policies packaged as installable plugins for **Cursor**. Guard policies ship a real
 `beforeShellExecution` hook, so a matched destructive command is **denied in the editor
 before it runs** — witnessed blocking on a real Cursor install (2026-08-24), with benign
