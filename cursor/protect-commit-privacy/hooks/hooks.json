@@ -3,7 +3,7 @@
   "hooks": {
     "beforeShellExecution": [
       {
-        "command": "python3 \"${CURSOR_PLUGIN_ROOT}/scripts/pretooluse.py\" --guard \"${CURSOR_PLUGIN_ROOT}/scripts/protect-commit-privacy.sh\"",
+        "command": "python3 \"${CURSOR_PLUGIN_ROOT}/scripts/cursor.py\" --guard \"${CURSOR_PLUGIN_ROOT}/scripts/protect-commit-privacy.sh\"",
         "timeout": 30
       }
     ]
