@@ -16,4 +16,4 @@ ci_config(.github/workflows|.github/actions|.github/dependabot.yml): never(shell
 if(ci_change_needed): open PR; await(review)  # an agent must not disarm the checks on its own work
 ```
 
-This policy is enforced in Cursor by the beforeShellExecution hook shipped with this plugin, subject to the fail-open condition stated in the plugin description. Repo-wide enforcement across every commit and in CI still needs `chock sync`. See https://github.com/open-coder-ai/chock
+This policy is enforced in Cursor by the beforeShellExecution hook shipped with this plugin, subject to the fail conditions stated in the plugin description. Repo-wide enforcement across every commit and in CI still needs `chock sync`. See https://github.com/open-coder-ai/chock
