@@ -14,7 +14,7 @@
     "cursor/firecrawl-fallback-only": "56fa068d7fee1dcdc50c61ece8d740b81189cd402edc3099b302e612c2af6575",
     "cursor/git-safety": "bb786983ab5b73d3fd62f54fd38e59dc1f65c844823d7180bfa50a8da5697a25",
     "cursor/injection-defense": "27f343f53131735f508fd7689e5c0de7c5300b4ff885a9278228fd64e2bfc4d6",
-    "cursor/java-security": "9a9c80c41e2238b5817c6ce66e3d9f88f00e8304f1ceb91ae37961c6a9e3a356",
+    "cursor/java-security": "fcc84f8478583730601baa0520fce16596b8d0f0b023f65143b2ce4a624e7802",
     "cursor/memory-discipline": "6389ed53af2d0aa79a5b97382f87966d2af2f4aaa09a8281d076dd5d4e36c814",
     "cursor/no-a11y-regression": "d80bf1cd92466089abe9a19e49d75adb0d4d77197d95561b292c3c9d14dc2481",
     "cursor/pin-github-actions": "c8e9e2554d0e977107f11cfe89e7074d05cc14d9419520270846de39dfe74797",
