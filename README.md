@@ -4,7 +4,7 @@
 
 <h1 align="center">chock-cursor-plugins</h1>
 
-<p align="center"><strong>Chock policies as Cursor plugins — guard policies ship a real <code>beforeShellExecution</code> deny hook.</strong></p>
+<p align="center"><strong>Chock policies as Cursor plugins — guards ship a real <code>beforeShellExecution</code> deny hook, gates judge the write at <code>preToolUse</code>.</strong></p>
 
 <p align="center">
 
@@ -38,11 +38,21 @@ Cursor reads this repository as a plugin marketplace via `.cursor-plugin/marketp
 
 ## What you get
 
-Guard policies ship the hook, a guard script, and a stdlib-only adapter, and are
-session-enforced: the hook returns Cursor's `permission: "deny"` response and the command is
-refused. This needs `python3` and a usable `bash` on PATH — without them the hook fails
-**open**, and every guard's description says so verbatim. Advisory policies are a skill the
-client reads; nothing stops a violation. See **[PLUGINS.md](PLUGINS.md)** for the full list:
+Two kinds of package enforce here, at different events.
+
+**Guard policies** ship a `beforeShellExecution` hook, a guard script and a stdlib-only
+adapter. The hook returns Cursor's `permission: "deny"` response and the command is refused.
+This needs `python3` and a usable `bash` on PATH — without them the hook fails **open**, and
+every guard's description says so verbatim.
+
+**Gate policies** judge what a turn writes, not what it runs. They ship the policy's gate and
+its runner instead of a shell guard, wired at `preToolUse` — judging the file a write would
+create, before it lands — and again at `stop`, re-reading what the turn actually left on disk.
+They need `python3`; without it a fail-open client allows silently, but a gate that cannot
+reach a decision refuses rather than allowing something it never judged. Cursor does not hold
+the turn's end, so a refusal at `stop` is handed back to the agent as a follow-up message once.
+
+Advisory policies are a skill the client reads; nothing stops a violation. See **[PLUGINS.md](PLUGINS.md)** for the full list:
 each policy, its version, and whether it enforces or advises in this client.
 
 ## Generated from chock-catalog
@@ -53,8 +63,8 @@ Every file here is compiled from policy sources in
 closed automatically — open them against the catalog instead.
 
 - **Generated only:** CI regenerates from the pinned catalog and fails on any difference.
-- **Byte-identical guards:** guard scripts and the hook adapter are verbatim copies of their
-  framework sources.
+- **Byte-identical guards:** each guard script is a verbatim copy of its policy's source in the
+  catalog, and the hook adapter a verbatim copy of its framework source.
 - **Best-effort, not a boundary:** guards are pattern-based filters; see
   [SECURITY.md](https://github.com/open-coder-ai/chock/blob/main/SECURITY.md).
 - **Tested upstream, and gated:** every policy ships an eval suite
@@ -62,8 +72,8 @@ closed automatically — open them against the catalog instead.
   `chock check` and `chock check --only evals` before packaging anything — a policy whose
   evals fail cannot reach this repository. The tests live in the catalog because the policy
   source does; this repository is compiled output.
-- This README is the exception: the one hand-written file in this repository, so it alone
-  sits outside the generated-only guarantee.
+- This README is hand-written, as are `SECURITY.md` and the workflows under `.github/`, so they
+  sit outside the generated-only guarantee.
 
 ### Verify it yourself
 
@@ -72,8 +82,9 @@ source and compares it with what is committed here:
 
 ```bash
 git clone https://github.com/open-coder-ai/chock-cursor-plugins dist
-git clone --branch v0.7.0 https://github.com/open-coder-ai/chock framework
 git clone https://github.com/open-coder-ai/chock-catalog catalog
+git clone --branch "$(tr -d '[:space:]' < catalog/.framework-ref)" \
+  https://github.com/open-coder-ai/chock framework
 pip install ./framework
 chock plugin build --repo catalog --policies-dir base --format cursor --out-dir dist
 chock marketplace build --dist dist --tree cursor
@@ -81,7 +92,9 @@ git -C dist diff --exit-code && git -C dist status --porcelain
 ```
 
 Silence from both `git` commands means this repository is byte-identical to a fresh build
-from the catalog. `--branch v0.7.0` is the framework release this tree was published from.
+from the catalog. The framework ref comes from the catalog's own `.framework-ref`, which is
+what the publish and Generated-only workflows read, so this recipe cannot drift from the
+release a tree was actually built with.
 `chock-market.lock` records a sha256 per published plugin directory, so one package can be
 checked without rebuilding the rest.
 
@@ -95,7 +108,7 @@ SHA. The tag names the release; the SHA is what holds the reviewed bytes still.
 | Fix or add a policy | [chock-catalog](https://github.com/open-coder-ai/chock-catalog/blob/main/CONTRIBUTING.md) — it reaches every client from there, including this one |
 | Report that a guard did or did not block on your Cursor version | an issue on [chock](https://github.com/open-coder-ai/chock/issues/new/choose), which records the witnessed-blocking claims these packages carry; "it fails open where you say it fails closed" is the most useful result you can send |
 | Report a bug in how packages are generated | [chock](https://github.com/open-coder-ai/chock/issues/new/choose), where the emitter lives |
-| Fix this README | here — it is the one hand-written file in the repository |
+| Fix this README | here — it is hand-written, not generated |
 
 ## Part of open-coder-ai
 
