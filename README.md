@@ -4,7 +4,7 @@
 
 <h1 align="center">chock-cursor-plugins</h1>
 
-<p align="center"><strong>A kill switch for your Cursor agent's wrong moves.</strong></p>
+<p align="center"><strong>Blocks your Cursor agent's wrong moves before they land.</strong></p>
 <p align="center">Chock policies as Cursor plugins — guards ship a real <code>beforeShellExecution</code> deny hook, gates judge the write at <code>preToolUse</code>.</p>
 
 <p align="center">
