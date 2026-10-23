@@ -29,7 +29,7 @@ same session still allowed.
 ## Two ways to get these plugins
 
 **This marketplace: no chock on the machine.** Each policy is its own plugin, republished with
-every chock release. You need Python 3.11+ and git, and nothing else. Cursor reads this
+every chock release. You need Python 3.11+, git and a bash (Git for Windows includes one). Cursor reads this
 repository as a plugin marketplace via `.cursor-plugin/marketplace.json`:
 
 ```
@@ -47,7 +47,7 @@ repository as a plugin marketplace via `.cursor-plugin/marketplace.json`:
 
 ```bash
 pip install chock
-chock install --selection '<code>' --client cursor --apply
+chock install --selection <code> --client cursor --apply
 ```
 
 `<code>` is the selection code the builder shows for your choice. Cursor has no command to run
