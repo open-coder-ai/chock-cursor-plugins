@@ -26,39 +26,47 @@ refuse the command is closer to one — a matched destructive command is denied 
 before it runs, witnessed on a real Cursor install (2026-08-24), with benign commands in the
 same session still allowed.
 
-## Moved to the chock.sh builder
+## Two ways to get these plugins
 
-> **This repository stops publishing on the chock.sh launch day and is archived 30 days later** (notice dated 2026-10-21).
+**This marketplace: no chock on the machine.** Each policy is its own plugin, republished with
+every chock release. You need Python 3.11+, git and a bash (Git for Windows includes one). Cursor reads this
+repository as a plugin marketplace via `.cursor-plugin/marketplace.json`:
 
-The plugins now come from the chock.sh builder at **<https://chock.sh/coding/builder/>**: pick the
-policies, and it gives you one command that builds a single `chock-guardrails` plugin on your
-machine from [chock-catalog](https://github.com/open-coder-ai/chock-catalog). Nothing is
-downloaded from this repository any more. The plugins already need Python 3.11+ to run their hooks,
-so `pip install chock` adds a package, not a runtime.
+```
+# Team marketplace: Dashboard -> Plugins -> Add Marketplace -> Import from Repo
+#   https://github.com/open-coder-ai/chock-cursor-plugins
+# Local install of one plugin (developer flow):
+#   copy cursor/<plugin-id>/ to ~/.cursor/plugins/local/<plugin-id>/ and reload Cursor
+```
 
-### Migrating from this marketplace
+**The builder: one plugin, needs chock.** Pick the policies you want at
+**<https://chock.sh/coding/builder/>**; it gives you one command that builds a single
+`chock-guardrails` plugin on your machine from
+[chock-catalog](https://github.com/open-coder-ai/chock-catalog). That command needs
+`pip install chock`:
 
-Remove what you installed from here first, so the same policy does not run twice (once from the old
-plugin, once from the new one):
+```bash
+pip install chock
+chock install --selection <code> --client cursor --apply
+```
 
-1. **Team marketplace import:** in Cursor, open **Dashboard -> Plugins & MCPs**, find this repository
-   under **Team Marketplaces** and remove it (an admin action on Enterprise). Then open **Customize**
-   and remove each plugin you installed from it; a plugin set to **Required** cannot be uninstalled
-   until it is changed in the marketplace's settings. See [Cursor's plugin docs](https://cursor.com/docs/plugins).
-2. **Local copy:** delete each `~/.cursor/plugins/local/<id>/` folder you copied from `cursor/<id>/`,
-   then run **Developer: Reload Window** (or restart Cursor).
-3. **Install from the builder:**
+`<code>` is the selection code the builder shows for your choice. Cursor has no command to run
+for a local plugin, so the output tells you to run **Developer: Reload Window**; then check the
+plugin under **Customize**.
 
-   ```bash
-   pip install chock
-   chock install --selection '<code>' --client cursor --apply
-   ```
+**Use one route for a given policy, never both.** Every copy of a plugin runs its own hook, so
+a policy installed from both places runs twice. To switch a policy from one route to the other,
+remove it from the first route before installing it from the second:
 
-   `<code>` is the selection code the [builder](https://chock.sh/coding/builder/) shows for your
-   choice. Cursor has no command to run for a local plugin, so the output tells you to run
-   **Developer: Reload Window**; then check the plugin under **Customize**.
+1. **Team marketplace import:** in Cursor, open **Dashboard -> Plugins & MCPs**, find this
+   repository under **Team Marketplaces** and remove it (an admin action on Enterprise). Then
+   open **Customize** and remove each plugin you installed from it; a plugin set to
+   **Required** cannot be uninstalled until it is changed in the marketplace's settings. See
+   [Cursor's plugin docs](https://cursor.com/docs/plugins).
+2. **Local copy:** delete each `~/.cursor/plugins/local/<id>/` folder you copied from
+   `cursor/<id>/`, then run **Developer: Reload Window** (or restart Cursor).
 
-### One policy, preselected
+### Builder links, one policy at a time
 
 Each link opens the builder with that one policy chosen for Cursor. The selections pin
 `catalog.ref` to chock-catalog commit `e885f918a335e20dfddb4fad0331d4d5b4c5eb43`, so a link builds the
