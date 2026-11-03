@@ -1,0 +1,21 @@
+{
+  "name": "block-secret-store-reads",
+  "displayName": "Block Reading Stored Credentials",
+  "description": "Best-effort guard against an agent reading credentials from the shell: cat, cp, tar, source or < on ~/.ssh (not .pub), ~/.aws, ~/.npmrc, agent CLI dirs, browser DBs, wallets, .env, *.tfstate; interpreter one-liners naming them; token printers (gh auth token, aws sts); curl, wget or iwr to cloud metadata credential paths (169.254.169.254, 169.254.170.2, GCE). Asks on env dumps. Misses: scripts, unresolved variables, xargs lists, $(...) results, metadata reached by DNS name, proxy or SDK. [Session-enforced in Cursor by a beforeShellExecution hook: a matched command is denied before it runs (witnessed blocking on Cursor, 2026-08-24). The hook needs git, a Python 3.11+ (python3, python or py; the Windows Store stub is skipped) and a usable bash resolved from PATH. The hook entry sets `failClosed`, which Cursor's hooks documentation (cursor.com/docs/agent/hooks) says blocks the action when the hook fails to run, so a hook that cannot start refuses the command. If the guard itself crashes, the hook returns `permission: \"ask\"`, which beforeShellExecution honours. Repo-wide enforcement at commit time and in CI still needs `chock sync`.]",
+  "version": "0.0.8",
+  "author": {
+    "name": "chock-core"
+  },
+  "repository": "https://github.com/open-coder-ai/chock-catalog",
+  "license": "Apache-2.0",
+  "keywords": [
+    "chock",
+    "policy-as-code",
+    "rule",
+    "advise",
+    "asi03"
+  ],
+  "category": "developer-tools",
+  "skills": "./skills/",
+  "hooks": "./hooks/hooks.json"
+}
