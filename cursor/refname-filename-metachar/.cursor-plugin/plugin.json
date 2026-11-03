@@ -1,0 +1,20 @@
+{
+  "name": "refname-filename-metachar",
+  "displayName": "Block Risky Characters in File and Branch Names",
+  "description": "Refuses names a shell, CI step or git can misread. Paths a change adds or renames into (commit, agent writes), and branches and tags pushed (pre-push), with command substitution, an IFS expansion, a backtick, ; & | < >, a double quote, a backslash, a control or bidi character, a base64-decode shape, a leading dash or trailing space or dot in a segment, or a '..' segment; a ref also with a full commit id's shape. A guard refuses git and file commands creating such names. No waiver. Friction, not a boundary. [Shell guard: Session-enforced in Cursor by a beforeShellExecution hook: a matched command is denied before it runs (witnessed blocking on Cursor, 2026-08-24). The hook needs git, a Python 3.11+ (python3, python or py; the Windows Store stub is skipped) and a usable bash resolved from PATH. The hook entry sets `failClosed`, which Cursor's hooks documentation (cursor.com/docs/agent/hooks) says blocks the action when the hook fails to run, so a hook that cannot start refuses the command. If the guard itself crashes, the hook returns `permission: \"ask\"`, which beforeShellExecution honours. Repo-wide enforcement at commit time and in CI still needs `chock sync`. Write gate: Session-enforced via PreToolUse and Stop hooks; needs git and a Python 3.11+. PreToolUse judges the file a tool call would write; Stop re-reads what the turn actually left on disk, so a file written through a shell heredoc is judged too. With no working Python the hook exits 2; without git, fail-open clients allow silently. A gate that cannot reach a decision refuses rather than allowing one it never judged. Enforcement at every commit and in CI still needs chock installed in the repo. In Cursor the turn's end is not held: a refusal there is handed back to the agent as a follow-up message, once, and a hook that fails to answer lets the turn end.]",
+  "version": "0.1.5",
+  "author": {
+    "name": "chock-core"
+  },
+  "repository": "https://github.com/open-coder-ai/chock-catalog",
+  "license": "Apache-2.0",
+  "keywords": [
+    "chock",
+    "policy-as-code",
+    "hook",
+    "block"
+  ],
+  "category": "developer-tools",
+  "skills": "./skills/",
+  "hooks": "./hooks/hooks.json"
+}

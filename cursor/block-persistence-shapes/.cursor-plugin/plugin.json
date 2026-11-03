@@ -1,0 +1,22 @@
+{
+  "name": "block-persistence-shapes",
+  "displayName": "Block Persistence and Publishing Commands",
+  "description": "Best-effort guard against shell commands that publish or keep access after the session: npm/pnpm/yarn/twine/ poetry/uv/cargo/gem publish, docker/podman push and login, npm token and registry edits, repos made public; user services, launch agents, cron/at/schtasks, Run keys, authorized_keys, runner registration, sudoers, setuid bits, detached downloads. Asks on gh release create, git remote add, git push to a URL. Misses: scripts, aliases, system units, shell rc files, ssh-run commands. [Session-enforced in Cursor by a beforeShellExecution hook: a matched command is denied before it runs (witnessed blocking on Cursor, 2026-08-24). The hook needs git, a Python 3.11+ (python3, python or py; the Windows Store stub is skipped) and a usable bash resolved from PATH. The hook entry sets `failClosed`, which Cursor's hooks documentation (cursor.com/docs/agent/hooks) says blocks the action when the hook fails to run, so a hook that cannot start refuses the command. If the guard itself crashes, the hook returns `permission: \"ask\"`, which beforeShellExecution honours. Repo-wide enforcement at commit time and in CI still needs `chock sync`.]",
+  "version": "0.0.6",
+  "author": {
+    "name": "chock-core"
+  },
+  "repository": "https://github.com/open-coder-ai/chock-catalog",
+  "license": "Apache-2.0",
+  "keywords": [
+    "chock",
+    "policy-as-code",
+    "rule",
+    "advise",
+    "asi03",
+    "asi10"
+  ],
+  "category": "developer-tools",
+  "skills": "./skills/",
+  "hooks": "./hooks/hooks.json"
+}

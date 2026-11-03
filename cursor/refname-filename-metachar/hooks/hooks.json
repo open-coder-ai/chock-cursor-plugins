@@ -1,0 +1,30 @@
+{
+  "version": 1,
+  "hooks": {
+    "beforeShellExecution": [
+      {
+        "command": "git -c 'alias.chock-sh=!set -f; IFS=; test -f $1 || { echo chock: the plugin launcher is missing, so this call cannot be checked. Refusing. >&2; exit 2; }; sh' chock-sh \"${CURSOR_PLUGIN_ROOT}/scripts/launch.sh\" \"${CURSOR_PLUGIN_ROOT}/scripts/cursor.py\" --guard \"${CURSOR_PLUGIN_ROOT}/scripts/refname-filename-metachar.py\"",
+        "timeout": 45,
+        "failClosed": true
+      }
+    ],
+    "preToolUse": [
+      {
+        "command": "git -c 'alias.chock-sh=!set -f; IFS=; test -f $1 || { echo chock: the plugin launcher is missing, so this call cannot be checked. Refusing. >&2; exit 2; }; sh' chock-sh \"${CURSOR_PLUGIN_ROOT}/scripts/launch.sh\" \"${CURSOR_PLUGIN_ROOT}/scripts/cursor.py\" --gate \"${CURSOR_PLUGIN_ROOT}/scripts/gate.json\"",
+        "timeout": 45,
+        "failClosed": true
+      },
+      {
+        "command": "git -c 'alias.chock-sh=!set -f; IFS=; test -f $1 || { echo chock: the plugin launcher is missing, so this call cannot be checked. Refusing. >&2; exit 2; }; sh' chock-sh \"${CURSOR_PLUGIN_ROOT}/scripts/launch.sh\" \"${CURSOR_PLUGIN_ROOT}/scripts/cursor.py\" --stop-check",
+        "timeout": 45,
+        "failClosed": true
+      }
+    ],
+    "stop": [
+      {
+        "command": "git -c 'alias.chock-sh=!set -f; IFS=; test -f $1 || { echo chock: the plugin launcher is missing, so this call cannot be checked. Refusing. >&2; exit 2; }; sh' chock-sh \"${CURSOR_PLUGIN_ROOT}/scripts/launch.sh\" \"${CURSOR_PLUGIN_ROOT}/scripts/cursor.py\" --gate \"${CURSOR_PLUGIN_ROOT}/scripts/gate.json\" --stop",
+        "timeout": 45
+      }
+    ]
+  }
+}
