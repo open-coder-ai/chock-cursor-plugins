@@ -2,10 +2,11 @@
   "name": "protect-commit-privacy",
   "displayName": "Protect Commit Privacy",
   "description": "Keeps the development conversation out of git history. Guard refuses `git commit` and `gh pr create|edit` whose message or body (inline -m/-b, -F/--file/--body-file, heredoc on -F -) holds a process-leak marker (session link, 'user asked', ...); commands behind cd, sh -c, sudo, env are read. A commit-msg hook applies the same markers to the recorded message. Narrow deny-list. No waiver: a legitimate phrase needs a person to remove it from MARKERS in the guard; an agent asks the person. [Session-enforced in Cursor by a beforeShellExecution hook: a matched command is denied before it runs (witnessed blocking on Cursor, 2026-08-24). The hook needs git, a Python 3.11+ (python3, python or py; the Windows Store stub is skipped) and a usable bash resolved from PATH. The hook entry sets `failClosed`, which Cursor's hooks documentation (cursor.com/docs/agent/hooks) says blocks the action when the hook fails to run, so a hook that cannot start refuses the command. If the guard itself crashes, the hook returns `permission: \"ask\"`, which beforeShellExecution honours. Repo-wide enforcement at commit time and in CI still needs `chock sync`.]",
-  "version": "0.2.6",
+  "version": "0.2.7",
   "author": {
     "name": "chock-core"
   },
+  "homepage": "https://chock.sh",
   "repository": "https://github.com/open-coder-ai/chock-catalog",
   "license": "Apache-2.0",
   "keywords": [

@@ -3,19 +3,14 @@
   "hooks": {
     "preToolUse": [
       {
-        "command": "git -c 'alias.chock-sh=!set -f; IFS=; test -f $1 || { echo chock: the plugin launcher is missing, so this call cannot be checked. Refusing. >&2; exit 2; }; sh' chock-sh \"${CURSOR_PLUGIN_ROOT}/scripts/launch.sh\" \"${CURSOR_PLUGIN_ROOT}/scripts/cursor.py\" --gate \"${CURSOR_PLUGIN_ROOT}/scripts/gate.json\"",
-        "timeout": 45,
-        "failClosed": true
-      },
-      {
-        "command": "git -c 'alias.chock-sh=!set -f; IFS=; test -f $1 || { echo chock: the plugin launcher is missing, so this call cannot be checked. Refusing. >&2; exit 2; }; sh' chock-sh \"${CURSOR_PLUGIN_ROOT}/scripts/launch.sh\" \"${CURSOR_PLUGIN_ROOT}/scripts/cursor.py\" --stop-check",
+        "command": "git -c 'alias.chock-sh=!set -f; IFS=; test -f $1 || { echo chock: the plugin launcher is missing, so this call cannot be checked. Refusing. >&2; exit 2; }; sh' chock-sh \"${CURSOR_PLUGIN_ROOT}/scripts/launch.sh\" \"${CURSOR_PLUGIN_ROOT}/scripts/cursor.py\" --multi \"${CURSOR_PLUGIN_ROOT}/scripts/chock_index/preToolUse-b6c825df.json\" --index-sha256 96143a1ec44b12b00b7298a943f5b675ad90e5d32199ebcac626fa84a3dec836 --root \"${CURSOR_PLUGIN_ROOT}\" --stop-check",
         "timeout": 45,
         "failClosed": true
       }
     ],
     "stop": [
       {
-        "command": "git -c 'alias.chock-sh=!set -f; IFS=; test -f $1 || { echo chock: the plugin launcher is missing, so this call cannot be checked. Refusing. >&2; exit 2; }; sh' chock-sh \"${CURSOR_PLUGIN_ROOT}/scripts/launch.sh\" \"${CURSOR_PLUGIN_ROOT}/scripts/cursor.py\" --gate \"${CURSOR_PLUGIN_ROOT}/scripts/gate.json\" --stop",
+        "command": "git -c 'alias.chock-sh=!set -f; IFS=; test -f $1 || { echo chock: the plugin launcher is missing, so this call cannot be checked. Refusing. >&2; exit 2; }; sh' chock-sh \"${CURSOR_PLUGIN_ROOT}/scripts/launch.sh\" \"${CURSOR_PLUGIN_ROOT}/scripts/cursor.py\" --multi \"${CURSOR_PLUGIN_ROOT}/scripts/chock_index/stop-52dcbfb8.json\" --index-sha256 43e6a0e4caad9fc8f16f8c131c62bb0b3afbc8208b68ba2674a3ecfaf7b917c3 --root \"${CURSOR_PLUGIN_ROOT}\"",
         "timeout": 45
       }
     ]

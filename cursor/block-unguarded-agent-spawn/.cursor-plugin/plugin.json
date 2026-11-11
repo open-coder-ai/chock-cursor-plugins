@@ -2,10 +2,11 @@
   "name": "block-unguarded-agent-spawn",
   "displayName": "Block Agents Started With Safety Off",
   "description": "Best effort. Refuses agents with safety off: claude --dangerously-skip-permissions, bypassPermissions, wildcard --allowedTools; codex --full-auto, --yolo, -a never, danger-full-access; gemini --yolo; cursor-agent --force; aider --yes-always; copilot --allow-all-tools; amp, cline, goose, opencode auto-approve; DeepSeek Harness 127.0.0.1:3080/api calls lifting sandbox/approvals (CVE-2026-82533). Sees through bash -c, sudo, npx. Misses: config, aliases, scripts, ssh, other dsh ports, file bodies. [Session-enforced in Cursor by a beforeShellExecution hook: a matched command is denied before it runs (witnessed blocking on Cursor, 2026-08-24). The hook needs git, a Python 3.11+ (python3, python or py; the Windows Store stub is skipped) and a usable bash resolved from PATH. The hook entry sets `failClosed`, which Cursor's hooks documentation (cursor.com/docs/agent/hooks) says blocks the action when the hook fails to run, so a hook that cannot start refuses the command. If the guard itself crashes, the hook returns `permission: \"ask\"`, which beforeShellExecution honours. Repo-wide enforcement at commit time and in CI still needs `chock sync`.]",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "author": {
     "name": "chock-core"
   },
+  "homepage": "https://chock.sh",
   "repository": "https://github.com/open-coder-ai/chock-catalog",
   "license": "Apache-2.0",
   "keywords": [

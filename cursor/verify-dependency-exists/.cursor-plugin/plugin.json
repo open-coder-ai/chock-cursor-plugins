@@ -2,10 +2,11 @@
   "name": "verify-dependency-exists",
   "displayName": "Dependency Allowlist",
   "description": "Allowlist gate for new dependencies; no registry lookup. Reads Python, Node, Rust, Ruby, PHP, JVM, .NET, Go, Elixir, Dart and Swift manifests (read, never run); blocks an added name missing from .chock/dependency-allowlist.txt, asks on a lockfile-only one. Not read: computed lists, sources, versions, some forms (see docs). No allowlist file (plugin-only installs): a manifest change warns, never blocks. Repo form is opt-in: seed, observe, `chock enable`. Runs: commit, agent write, turn's end. [Session-enforced via PreToolUse and Stop hooks; needs git and a Python 3.11+. PreToolUse judges the file a tool call would write; Stop re-reads what the turn actually left on disk, so a file written through a shell heredoc is judged too. With no working Python the hook exits 2; without git, fail-open clients allow silently. A gate that cannot reach a decision refuses rather than allowing one it never judged. Enforcement at every commit and in CI still needs chock installed in the repo. In Cursor the turn's end is not held: a refusal there is handed back to the agent as a follow-up message, once, and a hook that fails to answer lets the turn end.]",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "author": {
     "name": "chock-core"
   },
+  "homepage": "https://chock.sh",
   "repository": "https://github.com/open-coder-ai/chock-catalog",
   "license": "Apache-2.0",
   "keywords": [

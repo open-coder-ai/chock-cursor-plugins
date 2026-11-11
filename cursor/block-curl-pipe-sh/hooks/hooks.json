@@ -3,7 +3,7 @@
   "hooks": {
     "beforeShellExecution": [
       {
-        "command": "git -c 'alias.chock-sh=!set -f; IFS=; test -f $1 || { echo chock: the plugin launcher is missing, so this call cannot be checked. Refusing. >&2; exit 2; }; sh' chock-sh \"${CURSOR_PLUGIN_ROOT}/scripts/launch.sh\" \"${CURSOR_PLUGIN_ROOT}/scripts/cursor.py\" --guard \"${CURSOR_PLUGIN_ROOT}/scripts/block-curl-pipe-sh.py\"",
+        "command": "git -c 'alias.chock-sh=!set -f; IFS=; test -f $1 || { echo chock: the plugin launcher is missing, so this call cannot be checked. Refusing. >&2; exit 2; }; sh' chock-sh \"${CURSOR_PLUGIN_ROOT}/scripts/launch.sh\" \"${CURSOR_PLUGIN_ROOT}/scripts/cursor.py\" --multi \"${CURSOR_PLUGIN_ROOT}/scripts/chock_index/beforeShellExecution-b6c825df.json\" --index-sha256 3f9b3c69c02bc40ce6191a7032366cdeee9c3bcce9013fc4e6a4c57ffc052c3f --root \"${CURSOR_PLUGIN_ROOT}\"",
         "timeout": 45,
         "failClosed": true
       }

@@ -3,26 +3,21 @@
   "hooks": {
     "beforeShellExecution": [
       {
-        "command": "git -c 'alias.chock-sh=!set -f; IFS=; test -f $1 || { echo chock: the plugin launcher is missing, so this call cannot be checked. Refusing. >&2; exit 2; }; sh' chock-sh \"${CURSOR_PLUGIN_ROOT}/scripts/launch.sh\" \"${CURSOR_PLUGIN_ROOT}/scripts/cursor.py\" --guard \"${CURSOR_PLUGIN_ROOT}/scripts/refname-filename-metachar.py\"",
+        "command": "git -c 'alias.chock-sh=!set -f; IFS=; test -f $1 || { echo chock: the plugin launcher is missing, so this call cannot be checked. Refusing. >&2; exit 2; }; sh' chock-sh \"${CURSOR_PLUGIN_ROOT}/scripts/launch.sh\" \"${CURSOR_PLUGIN_ROOT}/scripts/cursor.py\" --multi \"${CURSOR_PLUGIN_ROOT}/scripts/chock_index/beforeShellExecution-b6c825df.json\" --index-sha256 10e9883fce4887624eee1a7d9990db41a7b5a24f52d6e147e48b4711a644877a --root \"${CURSOR_PLUGIN_ROOT}\"",
         "timeout": 45,
         "failClosed": true
       }
     ],
     "preToolUse": [
       {
-        "command": "git -c 'alias.chock-sh=!set -f; IFS=; test -f $1 || { echo chock: the plugin launcher is missing, so this call cannot be checked. Refusing. >&2; exit 2; }; sh' chock-sh \"${CURSOR_PLUGIN_ROOT}/scripts/launch.sh\" \"${CURSOR_PLUGIN_ROOT}/scripts/cursor.py\" --gate \"${CURSOR_PLUGIN_ROOT}/scripts/gate.json\"",
-        "timeout": 45,
-        "failClosed": true
-      },
-      {
-        "command": "git -c 'alias.chock-sh=!set -f; IFS=; test -f $1 || { echo chock: the plugin launcher is missing, so this call cannot be checked. Refusing. >&2; exit 2; }; sh' chock-sh \"${CURSOR_PLUGIN_ROOT}/scripts/launch.sh\" \"${CURSOR_PLUGIN_ROOT}/scripts/cursor.py\" --stop-check",
+        "command": "git -c 'alias.chock-sh=!set -f; IFS=; test -f $1 || { echo chock: the plugin launcher is missing, so this call cannot be checked. Refusing. >&2; exit 2; }; sh' chock-sh \"${CURSOR_PLUGIN_ROOT}/scripts/launch.sh\" \"${CURSOR_PLUGIN_ROOT}/scripts/cursor.py\" --multi \"${CURSOR_PLUGIN_ROOT}/scripts/chock_index/preToolUse-b6c825df.json\" --index-sha256 2fe08ae2c9c35cec80b0ce98f92be47adc90d839bbdf60701b5e3abb8b50c7b7 --root \"${CURSOR_PLUGIN_ROOT}\" --stop-check",
         "timeout": 45,
         "failClosed": true
       }
     ],
     "stop": [
       {
-        "command": "git -c 'alias.chock-sh=!set -f; IFS=; test -f $1 || { echo chock: the plugin launcher is missing, so this call cannot be checked. Refusing. >&2; exit 2; }; sh' chock-sh \"${CURSOR_PLUGIN_ROOT}/scripts/launch.sh\" \"${CURSOR_PLUGIN_ROOT}/scripts/cursor.py\" --gate \"${CURSOR_PLUGIN_ROOT}/scripts/gate.json\" --stop",
+        "command": "git -c 'alias.chock-sh=!set -f; IFS=; test -f $1 || { echo chock: the plugin launcher is missing, so this call cannot be checked. Refusing. >&2; exit 2; }; sh' chock-sh \"${CURSOR_PLUGIN_ROOT}/scripts/launch.sh\" \"${CURSOR_PLUGIN_ROOT}/scripts/cursor.py\" --multi \"${CURSOR_PLUGIN_ROOT}/scripts/chock_index/stop-52dcbfb8.json\" --index-sha256 2ec2867cd9e816aaf6d0e1f365bbe1a83ab8eea4788f29503b87426343dc5f70 --root \"${CURSOR_PLUGIN_ROOT}\"",
         "timeout": 45
       }
     ]
